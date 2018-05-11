@@ -1,0 +1,50 @@
+﻿@model BarterBot2.Models.Request
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Request</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderUserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeekerUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeekerUserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderServiceID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderServiceID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RequestID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

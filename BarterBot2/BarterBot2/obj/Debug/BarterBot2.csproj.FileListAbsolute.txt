@@ -1,0 +1,92 @@
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\obj\Debug\BarterBot2.csprojResolveAssemblyReference.cache
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\csc.exe
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\System.Collections.Immutable.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\vbc.exe
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\VBCSCompiler.exe
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\roslyn\VBCSCompiler.exe.config
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\BarterBot2.dll.config
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\BarterBot2.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\BarterBot2.pdb
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\Antlr3.Runtime.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\Microsoft.Web.Infrastructure.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\Newtonsoft.Json.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.Helpers.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.Mvc.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.Optimization.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.Razor.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.WebPages.Deployment.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.WebPages.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.WebPages.Razor.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\WebGrease.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.Helpers.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.Mvc.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.Optimization.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.Razor.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.WebPages.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.WebPages.Deployment.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\System.Web.WebPages.Razor.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\Antlr3.Runtime.pdb
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\Newtonsoft.Json.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\obj\Debug\BarterBot2.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\obj\Debug\BarterBot2.pdb
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\EntityFramework.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\EntityFramework.SqlServer.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\EntityFramework.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\EntityFramework.SqlServer.xml
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\Microsoft.AspNet.Identity.Core.dll
+c:\users\muhammad umair\documents\visual studio 2015\Projects\BarterBot2\BarterBot2\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\csc.exe
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\vbc.exe
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\VBCSCompiler.exe
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\BarterBot2.dll.config
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\BarterBot2.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\BarterBot2.pdb
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\Antlr3.Runtime.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\EntityFramework.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\EntityFramework.SqlServer.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\Newtonsoft.Json.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.Helpers.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.Mvc.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.Optimization.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.Razor.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.WebPages.Deployment.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.WebPages.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.WebPages.Razor.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\WebGrease.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\EntityFramework.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\EntityFramework.SqlServer.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.Helpers.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.Mvc.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.Optimization.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.Razor.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.WebPages.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.WebPages.Deployment.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\System.Web.WebPages.Razor.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\Antlr3.Runtime.pdb
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\bin\Newtonsoft.Json.xml
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\obj\Debug\BarterBot2.csprojResolveAssemblyReference.cache
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\obj\Debug\BarterBot2.dll
+C:\Users\MCs\Desktop\BarterBot2\BarterBot2\obj\Debug\BarterBot2.pdb
