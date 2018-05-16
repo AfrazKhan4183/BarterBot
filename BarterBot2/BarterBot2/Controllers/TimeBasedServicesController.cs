@@ -49,6 +49,7 @@ namespace BarterBot2.Controllers
         public ActionResult Create([Bind(Include = "ServiceID,WorkTime,Detail")] TimeBasedService timeBasedService)
         {
             int F_KEY = Convert.ToInt16(Session["EnteredServiceID"]);
+            timeBasedService.WorkTime += "Hour"; 
             timeBasedService.ServiceID = F_KEY;
             if (ModelState.IsValid)
             {

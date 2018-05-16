@@ -13,33 +13,37 @@
         BarterBot2.Models.Rank r = db3.ranks.Single(s => s.UserID == u.UserID);
     }
 
-    <div class="container-fluid" style="border:2px black solid;height:100px; background-color:#9b8f8f; text-align:center; color:white;margin-top:20px;"><h1  >@u.Username</h1>
- <div class="row">
-   <div class="col-sm-5" style="text-align:left;margin-left:10px;position:relative;bottom:5px;" >
-      <h4>User Profile</h4>
-     </div>
-     <div class="col-sm-7" style="text-align:left;margin-right:-10px;position:relative;bottom:5px;" ><h4>RANK:       @r.Status</h4></div>
-       </div></div>
+    
+        <div class="container-fluid" style="border:2px black solid;height:100px; background-color:#9b8f8f; text-align:center; color:white;margin-top:20px;">
+            <h1>@u.Username</h1>
+            <div class="row">
+                <div class="col-sm-5" style="text-align:left;margin-left:10px;position:relative;bottom:5px;">
+                    <h4>User Profile | <span style="color:##bac61e ;font-size:15px">Server is Connected ...</span></h4>
+                </div>
+                <div class="col-sm-7" style="text-align:left;margin-right:-10px;position:relative;bottom:5px;"><h4>RANK:       @r.Status</h4></div>
+            </div>
+        </div>
 
-   
-    <div class="container-fluid"  >
-        <div class="row">
-            <div class="col-md-6" style="background-color: white; text-align:center; color:black;">
-                <h1>Services</h1>
-                <h3>Skills you're offering</h3>
-                <p style="border-top:2px black solid" >
-                    
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6" style="background-color: white; text-align:center; color:black;">
+                    <h1>Services</h1>
+                    <h3>Skills you're offering</h3>
+                    <p style="border-top:2px black solid">
+
                         @if (Model.services.Count == 0)
                         {
-                            <h5 style="color:red" >you have no any services to offer</h5>
+                            <h5 style="color:red">you have no any services to offer</h5>
+                            <button style="width:100px" class="btn btn-block" onclick="window.location.href='@Url.Action("Create", "Services")';">Add Service +  </button>
                         }
                         else
                         {
-                            <table class="table table-responsive" >
+                            <table class="table table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
+                                        <th style="text-align:center;">Name</th>
+                                        <th style="text-align:center;">Type</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,89 +54,113 @@
                                                 BarterBot2.Models.BarterBot2DbContext df = new BarterBot2.Models.BarterBot2DbContext();
                                                 BarterBot2.Models.MoneyBasedService mb = df.MoneyBasedServices.Single(s => s.ServiceID == item.ServiceID);
 
-                                                <tr>
+                                                <tr style="color:#6475ba;border-right:2px solid #808080">
                                                     <td>@item.Title</td>
-                                                    <td>@item.Type<span style="color:black;" >@mb.WorkPrice - @mb.Currency</span></td>
+                                                    <td>@item.Type---<span style="color:black;font-size:12px;font-weight:bold">@mb.WorkPrice - @mb.Currency</span></td>
                                                 </tr>
                                             }
                                             else
                                             {
                                                 BarterBot2.Models.BarterBot2DbContext df = new BarterBot2.Models.BarterBot2DbContext();
                                                 BarterBot2.Models.TimeBasedService mb = df.TimeBasedServices.Single(s => s.ServiceID == item.ServiceID);
-                                                <tr>
+                                                <tr style="color:#6475ba;border-right:2px solid #808080">
                                                     <td>@item.Title</td>
-                                                    <td>@item.Type<span style="color:black;">@mb.WorkTime </span></td>
+                                                    <td>@item.Type---<span style="color:black;font-size:12px;font-weight:bold">@mb.WorkTime </span></td>
                                                 </tr>
+
                                             }
+
                                         }
+                                        <tr>
+                                            <td style="text-align:center;">
+                                                <button style="width:100px" class="btn btn-block" onclick="window.location.href='@Url.Action("Create", "Services")';">Add Service +  </button>
+                                            </td>
+                                        </tr>
                                     }
                                 </tbody>
-                            </table>
-                        }
 
-                        
-                    
-                        
-                </p>
-                <br>
-                <br>
-                <hr>
-                <div class="form-group">
-                    <div class="col-md-offset-6 col-md-10">
-                        <button style="width:100px" class="btn btn-block" onclick="window.location.href='@Url.Action("Create", "Services")';" >Add Service</button>
-                    </div>
+                            </table>
+                                        }
+
+
+
+
+                    </p>
+
+
                 </div>
-            </div>
-            <div class="col-md-6" style="background-color: white; text-align:center; color:black;">
-                <h1>Interest</h1>
-                <h3>Skills you're interested to get</h3>
-                <p style="border-top:2px black solid" >
-                    <ul style="list-style:none" >
+                <div class="col-md-6" style="background-color: white; text-align:center; color:black;">
+                    <h1>Interest</h1>
+                    <h3>Skills you're interested to get</h3>
+                    <p style="border-top:2px black solid">
+
                         @if (Model.interests.Count == 0)
                         {
-                            <h5 style="color:red" >you have no any interests yet...</h5>
+                            <h5 style="color:red">you have no any interests yet...</h5>
+                            <button style="width:100px" class="btn btn-block" onclick="window.location.href='@Url.Action("Create", "Interests")';">Add Interest +</button>
                         }
                         else
                         {
-                            foreach (var item in Model.interests)
-                            {
-                                <li style="color:#6475ba" >@item.Title </li>
-                                
-                            }
-                        }
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center;">Name</th>
+                                        <th style="text-align:center;">Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{foreach (var item in Model.interests)
+                                        {
+                                            <tr style="color:#1f8745;border-left:2px solid #808080">
+                                                <td>
+                                                    @item.Title
+                                                </td>
 
-                        
-                    </ul>
-                </p>
-                <br>
-                
-                <hr>
-                <div class="form-group">
-                    <div class="col-md-offset-6 col-md-10">
-                        <button style="width:100px"  class="btn btn-block" onclick="window.location.href='@Url.Action("Create", "Interests")';">Add Interest</button>
-                    </div>
+                                                <td>
+                                                    @item.Type
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    <tr>
+                                        <td>
+                                            <button style="width:100px" class="btn btn-block" onclick="window.location.href='@Url.Action("Create", "Interests")';">Add Interest +</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                                        }
+                    </p>
+
+
                 </div>
-            </div>
- 
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="container">
-                    <div class="well well-sm" style="max-height:200px;overflow:scroll"  >
-                        <h2> Your Sent Requets</h2>
 
-                        @{
-                            <table class="table table-bordered" >
+            </div>
+            <hr />
+
+            <div class="row">
+
+                <div class="container">
+                    <div class="well well-sm" style="border:2px #808080 solid;border-radius:20px ">
+                        <h2> Notifications</h2>
+                        @if (Model.sentRequests.Count == 0)
+                        {
+                            <h3 style="color:#b73939">You have no any notifications</h3>
+                        }
+                        else
+                        {
+
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Service</th>
+                                        <th>Type</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                <tbody  >
+                                <tbody>
                                     @foreach (var item in Model.sentRequests)
                                     {
                                         BarterBot2.Models.BarterBot2DbContext db = new BarterBot2.Models.BarterBot2DbContext();
@@ -167,6 +195,9 @@
                                             <td>
                                                 @Pservice.Title
                                             </td>
+                                            <td>
+                                                @Pservice.Type
+                                            </td>
                                             @if (item.Status == "sent")
                                             {
                                                 <td>
@@ -179,7 +210,7 @@
                                                     @item.Status
                                                 </td>
                                                 <td>
-                                                    <button onclick="window.location.href='@Url.Action("Delete", "Requests", new { Rid = item.RequestID })';">OK</button>
+                                                    <button class="btn btn-success" onclick="window.location.href='@Url.Action("Delete", "Requests", new { Rid = item.RequestID })';">OK</button>
                                                 </td>
                                             }
 
@@ -188,176 +219,259 @@
                                     }
                                 </tbody>
                             </table>
-                            }
-                            <br>
-                          
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-lg-6">
-                       
-                            <div class="well well-sm" style="max-height:200px;overflow:scroll" >
-                                <h2> Services you can get from others</h2>
 
-                                @{
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Service</th>
-                                                <th>Type</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var item in Model.offeredServices)
-                                            {
-                                                BarterBot2.Models.BarterBot2DbContext db = new BarterBot2.Models.BarterBot2DbContext();
-                                                BarterBot2.Models.User USER = new BarterBot2.Models.User();
+                        }
+                        <br>
 
-                                                foreach (BarterBot2.Models.User user in db.users)
-                                                {
-                                                    if (user.UserID == item.UserID)
-                                                    {
-                                                        USER = user;
-                                                    }
-                                                }
-
-                                                <tr>
-                                                    <td>
-                                                        @USER.FirstName
-                                                    </td>
-                                                    <td>
-                                                        @USER.Email
-                                                    </td>
-                                                    <td>
-                                                        @item.Title
-                                                    </td>
-                                                    <td>
-                                                        @item.Type
-                                                    </td>
-                                                    <td>
-                                                        <button onclick="window.location.href='@Url.Action("Create", "Requests",new { PSid = item.ServiceID,Pid = USER.UserID,Sid = Convert.ToInt32(Session["UserId"]) })';">Sent Request</button>
-                                                    </td>
-                                                    <td>
-                                                        <button onclick="window.location.href='@Url.Action("Conversation", "Messages",new { Rid=item.UserID })';" > Message </button>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                }
-
-                            </div>
-                      
                     </div>
                 </div>
-        
-        <div class="row">
-
-            <div class="col-md-8" >
+            </div>
+            <hr />
+            <div class="row">
                 <div class="container">
-                    <div class="well well-sm">
-                        <h2>Incoming Request </h2>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Service</th>
-                                    <th>Type</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.comingRequests)
-                                {
-                                    BarterBot2.Models.BarterBot2DbContext db = new BarterBot2.Models.BarterBot2DbContext();
-                                    BarterBot2.Models.User USER = new BarterBot2.Models.User();
-                                    BarterBot2.Models.Service Pservice = new BarterBot2.Models.Service();
-
-                                    foreach (BarterBot2.Models.User user in db.users)
-                                    {
-                                        if (user.UserID == item.SeekerUserID)
-                                        {
-                                            USER = user;
-                                        }
-                                    }
-
-                                    foreach (BarterBot2.Models.Service s in db.Services)
-                                    {
-                                        if (s.ServiceID == item.ProviderServiceID)
-                                        {
-                                            Pservice = s;
-                                        }
-                                    }
-
-
-
+                    <div class="well well-sm" style="max-height:400px;overflow:scroll;border:2px #808080 solid;border-radius:5px;">
+                        <h2> Services you can get from others</h2>
+                        @if (Model.offeredServices.Count == 0)
+                        {
+                            <h3 style="color:#b73939">No any offered services in system...</h3>
+                        }
+                        else
+                        {
+                            <table class="table table-bordered">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            @USER.FirstName
-                                        </td>
-                                        <td>
-                                            @USER.Email
-                                        </td>
-                                        <td>
-                                            @Pservice.Title
-                                        </td>
-                                        <td>
-                                            @Pservice.Type
-                                        </td>
-                                        <td>
-                                            <button onclick="window.location.href='@Url.Action("Reject", "Requests", new { Rid = item.RequestID})';">Reject</button> |
-                                            <button  onclick="window.location.href='@Url.Action("Accept", "Requests", new { Rid = item.RequestID})';">Accept</button>
-                                        </td>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Service</th>
+                                        <th>Type</th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                </div>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.offeredServices)
+                                    {
+                                        BarterBot2.Models.BarterBot2DbContext db = new BarterBot2.Models.BarterBot2DbContext();
+                                        BarterBot2.Models.User USER = new BarterBot2.Models.User();
 
+                                        foreach (BarterBot2.Models.User user in db.users)
+                                        {
+                                            if (user.UserID == item.UserID)
+                                            {
+                                                USER = user;
+                                            }
+                                        }
+
+                                        <tr>
+                                            <td>
+                                                @USER.FirstName
+                                            </td>
+                                            <td>
+                                                @USER.Email
+                                            </td>
+                                            <td>
+                                                @item.Title
+                                            </td>
+                                            <td>
+                                                @item.Type
+                                            </td>
+                                            @if (item.Type == "Money-Based")
+                                            {
+                                                BarterBot2.Models.BarterBot2DbContext db4 = new BarterBot2.Models.BarterBot2DbContext();
+                                                BarterBot2.Models.MoneyBasedService mn = db4.MoneyBasedServices.Single(s => s.ServiceID == item.ServiceID);
+
+                                                <td>
+                                                    @mn.WorkPrice-@mn.Currency
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                BarterBot2.Models.BarterBot2DbContext db5 = new BarterBot2.Models.BarterBot2DbContext();
+                                                BarterBot2.Models.TimeBasedService tm = db5.TimeBasedServices.Single(s => s.ServiceID == item.ServiceID);
+                                                <td>
+                                                    @tm.WorkTime
+                                                </td>
+                                            }
+                                            <td>
+                                                <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Create", "Requests",new { PSid = item.ServiceID,Pid = USER.UserID,Sid = Convert.ToInt32(Session["UserId"]) })';">Sent Request &rArr;</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-info" onclick="window.location.href='@Url.Action("Conversation", "Messages",new { Rid=item.UserID })';"> Message </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+
+                    </div>
+
+
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+
+                <div class="container">
+                    <div class="well well-sm" style="border:2px #808080 solid;border-radius:20px;">
+                        <h2>Incoming Requests </h2>
+                        @if (Model.comingRequests.Count == 0)
+                        {
+                            <h3 style="color:#b73939">You don't have any Incoming Requests...</h3>
+                        }
+                        else
+                        {
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Service</th>
+                                        <th>Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.comingRequests)
+                                    {
+                                        BarterBot2.Models.BarterBot2DbContext db = new BarterBot2.Models.BarterBot2DbContext();
+                                        BarterBot2.Models.User USER = new BarterBot2.Models.User();
+                                        BarterBot2.Models.Service Pservice = new BarterBot2.Models.Service();
+
+                                        foreach (BarterBot2.Models.User user in db.users)
+                                        {
+                                            if (user.UserID == item.SeekerUserID)
+                                            {
+                                                USER = user;
+                                            }
+                                        }
+
+                                        foreach (BarterBot2.Models.Service s in db.Services)
+                                        {
+                                            if (s.ServiceID == item.ProviderServiceID)
+                                            {
+                                                Pservice = s;
+                                            }
+                                        }
+
+
+
+                                        <tr>
+                                            <td>
+                                                @USER.FirstName
+                                            </td>
+                                            <td>
+                                                @USER.Email
+                                            </td>
+                                            <td>
+                                                @Pservice.Title
+                                            </td>
+                                            <td>
+                                                @Pservice.Type
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger" onclick="window.location.href='@Url.Action("Reject", "Requests", new { Rid = item.RequestID })';">Reject</button> |
+                                                <button class="btn btn-success" onclick="window.location.href='@Url.Action("Accept", "Requests", new { Rid = item.RequestID })';">Accept</button>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+
+                </div>
 
             </div>
-            <div class="col-md-4">
-                <div class="container-fluid">
-                    <div class="well well-sm" style="width:300px;height:400px;max-height:400px; overflow:scroll;">
-                        <h2>Messages</h2>
-                        <div>
-                            @{ 
 
-                                BarterBot2.Models.BarterBot2DbContext db2 = new BarterBot2.Models.BarterBot2DbContext();
-                                BarterBot2.Models.User USER1 = new BarterBot2.Models.User();
 
-                                foreach (BarterBot2.Models.Message m in Model.messages)
+            <hr />
+
+            <div class="row">
+                <div class="container" style="border:2px #808080 solid;border-radius:20px;">
+
+                    <h2 style="margin-left:500px">Messages</h2>
+
+                    @if (Model.messages.Count == 0)
+                    {
+                        <h3 style="color:#b73939">You don't have any messages...</h3>
+                    }
+                    else
+                    {
+                        using (BarterBot2.Models.BarterBot2DbContext db = new BarterBot2.Models.BarterBot2DbContext())
+                        {
+                            foreach (BarterBot2.Models.Conversation c in db.conversations)
+                            {
+
+                                if (c.ReceiverID == Model.ID || c.SenderID == Model.ID)
                                 {
-                                    if(m.SenderID == Model.ID)
+
+                                    int other;
+                                    if (c.ReceiverID == Model.ID)
                                     {
-                                        
-                                        <div style="width:150px;border-color:#808080;float:right" >
-                                            
-                                            <h6 style="float:right" >@m.Text </h6>
-                                        </div>
+                                        other = c.SenderID;
                                     }
                                     else
                                     {
-                                        USER1 = db2.users.Single(s => s.UserID == m.SenderID);
-
-                                        <div style="width:150px;border-color:#ffffff;float:left">
-                                            <h6>@USER1.FirstName: @m.Text </h6>
-
-                                        </div>
+                                        other = c.ReceiverID;
                                     }
-                                }
-                            }
-                        </div>
-                     
+
+                                    BarterBot2.Models.User uu = db.users.Single(s => s.UserID == other);
 
 
-                    </div>
+                                    <div class="well well-md" style="max-height:300px;">
+                                        <h4 style="color:#cc8c32;text-decoration:underline"> @uu.Username</h4>
+                                        <div class="row">
+                                            <div class="col-md-10" style="max-height:150px;overflow:scroll;border:2px #6475ba solid;border-radius:5px;">
+                                                @{
+
+                                                    string merge = c.ReceiverID.ToString() + c.SenderID.ToString();
+                                                    int reverse = Convert.ToInt32(merge);
+
+                                                    foreach (BarterBot2.Models.Message m in db.messages)
+                                                    {
+                                                        if (m.SenRevID == c.SenRevID || m.SenRevID == reverse)
+                                                        {
+                                                            <div class="row">
+                                                                @if (m.SenderID == Model.ID)
+                                                                {
+
+                                                                    <div class="col-sm-6" style="margin-right:5px;width:400px;border-radius:5px;background-color:#475b60;border:2px solid #ffffff ;float:right;color:#ffffff">
+
+                                                                        <h5 style="float:right;margin-right:5px;">@m.Text </h5>
+                                                                    </div>
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="col-sm-6" style="margin-left:5px;width:400px;border-radius:5px;background-color:#b99f39;border:2px solid #ffffff ;float:left;color:#ffffff">
+                                                                        <h5 style="float:left;margin-left:5px;float:left">@m.Text </h5>
+
+                                                                    </div>
+
+                                                                }
+                                                            </div>
+                                                        }
+                                                    }
+                                                }
+
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button class="btn btn-info" style="position:relative;left:3px;top:10px;" onclick="window.location.href='@Url.Action("Conversation", "Messages",new { Rid=uu.UserID })';"> Message </button>|
+                                                <button class="btn  btn-danger" style="position:relative;top:10px;" onclick="window.location.href='@Url.Action("Delete", "Messages",new { SedRecid = c.SenRevID, reverse = reverse  })';"> Delete </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
                 </div>
             </div>
-        </div>
 
-            </div>
+        </div>
+    
+                                                    
+        
+
+          

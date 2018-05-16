@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BarterBot2.Models;
+using System.Net.Sockets;
+using System.Text;
 
 namespace BarterBot2.Controllers
 {
@@ -39,7 +41,7 @@ namespace BarterBot2.Controllers
                 {
                     Rank r = new Rank();
                     r.NumOfOrders = 0;
-                    r.Status = "Bigginer";
+                    r.Status = "Begginer";
 
                     db.users.Add(user);
                     
@@ -87,7 +89,6 @@ namespace BarterBot2.Controllers
 
         public ActionResult LoggedIn()
         {
-            
             OfferedServices.Clear();
 
             BarterBot2DbContext db = new BarterBot2DbContext();
@@ -170,10 +171,7 @@ namespace BarterBot2.Controllers
                         ud.sentRequests.Add(r);
                     }
                 }
-
-
-               // ud.comingRequests = ComingRequests.ToList();
-               // ud.sentRequests = SentRequests.ToList();
+                
                 ud.offeredServices = OfferedServices.ToList();
 
                 List<int> conversationIDs = new List<int>();
@@ -207,6 +205,7 @@ namespace BarterBot2.Controllers
                 }
 
                 ud.messages = Messages;
+                ud.conversationIds = conversationIDs;
                 ud.ID = ID;
 
                 Session["LoginFlag"] = 1;

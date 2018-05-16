@@ -4,6 +4,37 @@
     ViewBag.Title = "Create";
 }
 
+@{
+    List<SelectListItem> llist = new List<SelectListItem>();
+    SelectListItem item1 = new SelectListItem();
+    item1.Text = "US Dollar";
+    item1.Value = "US Dollar";
+
+    SelectListItem item2 = new SelectListItem();
+    item2.Text = "PAK Rupee";
+    item2.Value = "PAK Rupee";
+
+    SelectListItem item3 = new SelectListItem();
+    item3.Text = "JAP Yen";
+    item3.Value = "JAP Yen";
+
+    SelectListItem item4 = new SelectListItem();
+    item4.Text = "SAUDI Riyal";
+    item4.Value = "SAUDI Riyal";
+
+    SelectListItem item5 = new SelectListItem();
+    item5.Text = "UK-Euro";
+    item5.Value = "UK-Euro";
+
+    llist.Add(item1);
+    llist.Add(item3);
+    llist.Add(item4);
+    llist.Add(item5);
+    llist.Add(item2);
+
+}
+
+
 <h2>Create</h2>
 
 @using (Html.BeginForm()) 
@@ -32,9 +63,8 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Currency, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Currency, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Currency, "", new { @class = "text-danger" })
+            <div class="col-md-10" style="font-size:medium;padding-top:10px;" >
+                @Html.DropDownListFor(model=>model.Currency,llist,"Select")
             </div>
         </div>
 

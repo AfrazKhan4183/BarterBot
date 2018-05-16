@@ -1,0 +1,513 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Report</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container" style="border:2px solid #3e3b3b;text-align:center" >
+        <h1 style="border-bottom:2px solid #3e3b3b" >Report</h1>
+        <div class="row">
+            <h2 style="text-decoration:underline">USERs</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            contact
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Country
+                        </th>
+                        <th>
+                            DOB
+                        </th>
+                        <th>
+                            Zip
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+
+                        BarterBot2.Models.BarterBot2DbContext db = new BarterBot2.Models.BarterBot2DbContext();
+                        foreach (BarterBot2.Models.User s in db.users)
+                        {
+                            <tr>
+                                <td>
+                                    @s.UserID
+                                </td>
+                                <td>
+                                    @s.Contact
+                                </td>
+                                <td>
+                                    @s.Email
+                                </td>
+                                <td>
+                                    @s.Country
+                                </td>
+                                <td>
+                                    @s.DateOfBirth
+                                </td>
+                                <td>
+                                    @s.ZipCode
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <hr />
+
+        <div class="row">
+            <h2 style="text-decoration:underline">SERVICEs</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            USERid
+                        </th>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Type
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+
+                        BarterBot2.Models.BarterBot2DbContext db1 = new BarterBot2.Models.BarterBot2DbContext();
+                        foreach (BarterBot2.Models.Service s in db1.Services)
+                        {
+                            <tr>
+                                <td>
+                                    @s.ServiceID
+                                </td>
+                                <td>
+                                    @s.UserID
+                                </td>
+                                <td>
+                                    @s.Title
+                                </td>
+                                <td>
+                                    @s.Type
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <h2 style="text-decoration:underline">CONVERSATIONs</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            SenRevID
+                        </th>
+                        <th>
+                            SenderID
+                        </th>
+                        <th>
+                            RecieverID
+                        </th>
+                        <th>
+                            TotalMsg's
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+
+                        BarterBot2.Models.BarterBot2DbContext db2 = new BarterBot2.Models.BarterBot2DbContext();
+                        foreach (BarterBot2.Models.Conversation s in db2.conversations)
+                        {
+                            <tr>
+                                <td>
+                                    @s.ConversationID
+                                </td>
+                                <td>
+                                    @s.SenRevID
+                                </td>
+                                <td>
+                                    @s.SenderID
+                                </td>
+                                <td>
+                                    @s.ReceiverID
+                                </td>
+                                <td>
+                                    @s.TotalMessages
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <hr />
+
+        <div class="row">
+            <h2 style="text-decoration:underline">MESSAGEs</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            SenRevID
+                        </th>
+                        <th>
+                            SenderID
+                        </th>
+
+                        <th>
+                            Text
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+
+                        BarterBot2.Models.BarterBot2DbContext db3 = new BarterBot2.Models.BarterBot2DbContext();
+                        foreach (BarterBot2.Models.Message s in db3.messages)
+                        {
+                            <tr>
+                                <td>
+                                    @s.MessageID
+                                </td>
+                                <td>
+                                    @s.SenRevID
+                                </td>
+                                <td>
+                                    @s.SenderID
+                                </td>
+
+                                <td>
+                                    @s.Text
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <hr />
+
+        <div class="row">
+            <h2 style="text-decoration:underline">REQUESTs</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            ProviderID
+                        </th>
+                        <th>
+                            SeekerID
+                        </th>
+
+                        <th>
+                            Provider-ServiceID
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+
+                        BarterBot2.Models.BarterBot2DbContext db4 = new BarterBot2.Models.BarterBot2DbContext();
+                        foreach (BarterBot2.Models.Request s in db4.requests)
+                        {
+                            <tr>
+                                <td>
+                                    @s.RequestID
+                                </td>
+                                <td>
+                                    @s.ProviderUserID
+                                </td>
+                                <td>
+                                    @s.SeekerUserID
+                                </td>
+
+                                <td>
+                                    @s.ProviderServiceID
+                                </td>
+                                <td>
+                                    @s.Status
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+        <hr />
+
+        <div class="row">
+            <h2 style="text-decoration:underline">INTERESTs</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            USERID
+                        </th>
+                        <th>
+                            Title
+                        </th>
+
+                        <th>
+                            Type
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+
+                        BarterBot2.Models.BarterBot2DbContext db5 = new BarterBot2.Models.BarterBot2DbContext();
+                        foreach (BarterBot2.Models.Interest s in db5.interests)
+                        {
+                            <tr>
+                                <td>
+                                    @s.InterestID
+                                </td>
+                                <td>
+                                    @s.UserID
+                                </td>
+                                <td>
+                                    @s.Title
+                                </td>
+
+                                <td>
+                                    @s.Type
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+        <hr />
+
+        <div class="row">
+            <h2 style="text-decoration:underline">Time-BASED-SERVICEs</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            SERVICE-ID
+                        </th>
+                        <th>
+                            WorkTime
+                        </th>
+
+                        <th>
+                            Detail
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+
+                        BarterBot2.Models.BarterBot2DbContext db6 = new BarterBot2.Models.BarterBot2DbContext();
+                        foreach (BarterBot2.Models.TimeBasedService s in db6.TimeBasedServices)
+                        {
+                            <tr>
+                                <td>
+                                    @s.ID
+                                </td>
+                                <td>
+                                    @s.ServiceID
+                                </td>
+                                <td>
+                                    @s.WorkTime
+                                </td>
+
+                                <td>
+                                    @s.Detail
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <hr />
+
+        <div class="row">
+            <h2 style="text-decoration:underline">MONEY-BASED-SERVICEs</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            SERVICE-ID
+                        </th>
+                        <th>
+                            WorkPrice
+                        </th>
+
+                        <th>
+                            Detail
+                        </th>
+                        <th>
+                            Currency
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+
+                        BarterBot2.Models.BarterBot2DbContext db7 = new BarterBot2.Models.BarterBot2DbContext();
+                        foreach (BarterBot2.Models.MoneyBasedService s in db7.MoneyBasedServices)
+                        {
+                            <tr>
+                                <td>
+                                    @s.ID
+                                </td>
+                                <td>
+                                    @s.ServiceID
+                                </td>
+                                <td>
+                                    @s.WorkPrice
+                                </td>
+
+                                <td>
+                                    @s.Detail
+                                </td>
+                                <td>
+                                    @s.Currency
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+
+        <hr />
+
+        <div class="row">
+            <h2 style="text-decoration:underline">RANKs</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            USER-ID
+                        </th>
+                        <th>
+                            Num of Orders
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+
+                        BarterBot2.Models.BarterBot2DbContext db8 = new BarterBot2.Models.BarterBot2DbContext();
+                        foreach (BarterBot2.Models.Rank s in db8.ranks)
+                        {
+                            <tr>
+                                <td>
+                                    @s.RankID
+                                </td>
+                                <td>
+                                    @s.UserID
+                                </td>
+                                <td>
+                                    @s.NumOfOrders
+                                </td>
+
+                                <td>
+                                    @s.Status
+                                </td>
+
+
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>

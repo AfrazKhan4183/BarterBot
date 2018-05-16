@@ -26,5 +26,10 @@ namespace BarterBot2.Controllers
 
             return View();
         }
+
+        public  ActionResult Report()
+        {
+            return View("Report");
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace BarterBot2.Models
         public List<Service> services = new List<Service>();
         public List<Service> offeredServices = new List<Service>();
         public List<Message> messages = new List<Message>();
+        public List<int> conversationIds = new List<int>();
     }
 }

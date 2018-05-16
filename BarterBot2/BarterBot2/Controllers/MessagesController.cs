@@ -60,23 +60,6 @@ namespace BarterBot2.Controllers
                 db.messages.Add(message);
                 db.SaveChanges();
   
-                //BarterBot2DbContext db2 = new BarterBot2DbContext();
-
-                //if (db2.conversations.Find(c.SenRevID) == null)
-                //{
-                //    c.TotalMessages = 1;
-                //    db2.conversations.Add(c);
-                //    db2.SaveChanges();
-                //    db2.Dispose();
-                //}
-                //else
-                //{
-                //    BarterBot2DbContext b2 = new BarterBot2DbContext();
-                //    b2.conversations.Find(c.SenRevID).TotalMessages++;
-                //    b2.SaveChanges();
-                //    b2.Dispose();
-                //}
-                
             }
 
             return RedirectToAction("CreateConversation");
@@ -137,11 +120,7 @@ namespace BarterBot2.Controllers
                     {
                         concountr++;
                     }
-
-
-                
-
-
+                    
                 }
 
                 if (concount == concount1 && concountr == concount1)
@@ -160,30 +139,7 @@ namespace BarterBot2.Controllers
                         db2.conversations.Add(cc);
                         db2.SaveChanges();
                     }
-                
-
-            //if (db2.conversations.Find(s=>s.SenRevID==c.SenRevID) == null && db2.conversations.Single(s=>s.SenRevID == reverseId)  == null)
-            //{
-            //    c.TotalMessages = 1;
-            //    cc = c;
-            //    db2.conversations.Add(cc);
-            //    db2.SaveChanges();
-            //}
-            //else if(db2.conversations.Single(s => s.SenRevID == c.SenRevID) == null && db2.conversations.Single(s => s.SenRevID != reverseId) == null)
-            //{ 
-            //    BarterBot2DbContext b2 = new BarterBot2DbContext();
-            //    b2.conversations.Single(s => s.SenRevID != reverseId).TotalMessages++;
-            //    b2.SaveChanges();
- 
-            //}
-            //else
-            //{
-            //    BarterBot2DbContext b2 = new BarterBot2DbContext();
-            //    b2.conversations.Single(s => s.SenRevID != c.SenRevID).TotalMessages++;
-            //    b2.SaveChanges();
-      
-            //}
-
+            
             return RedirectToAction("LoggedIn", "Account");
         }
 
@@ -220,30 +176,32 @@ namespace BarterBot2.Controllers
         }
 
         // GET: Messages/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int SedRecid, int reverse)
         {
-            if (id == null)
+             
+            foreach(Conversation c in db.conversations)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if(c.SenRevID == SedRecid || c.SenRevID == reverse)
+                {
+                    db.conversations.Remove(c);
+                    
+                }
             }
-            Message message = db.messages.Find(id);
-            if (message == null)
+
+            foreach (Message m in db.messages )
             {
-                return HttpNotFound();
+                if (m.SenRevID == SedRecid || m.SenRevID == reverse)
+                {
+                    db.messages.Remove(m);
+                    
+                }
             }
-            return View(message);
+            db.SaveChanges();
+            return RedirectToAction("LoggedIn", "Account");
         }
 
         // POST: Messages/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Message message = db.messages.Find(id);
-            db.messages.Remove(message);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+     
 
        
     }

@@ -138,9 +138,10 @@ namespace BarterBot2.Controllers
                 if(r.RequestID == Rid)
                 {
                     r.Status = "Rejected";
-                    db.SaveChanges();
+                
                 }
             }
+            db.SaveChanges();
 
             return RedirectToAction("LoggedIn", "Account");
         }
@@ -153,6 +154,42 @@ namespace BarterBot2.Controllers
                 {
                     r.Status = "Accepted";
                     
+                    Rank Prov = db.ranks.Single(s => s.UserID == r.ProviderUserID);
+                    Rank Seeker = db.ranks.Single(s => s.UserID == r.SeekerUserID);
+
+                    db.ranks.Find(Prov.RankID).NumOfOrders++;
+                    db.ranks.Find(Seeker.RankID).NumOfOrders++;
+                    if(db.ranks.Find(Prov.RankID).NumOfOrders >2)
+                    {
+                        db.ranks.Find(Prov.RankID).Status = "Talented";
+                    }else if(db.ranks.Find(Prov.RankID).NumOfOrders > 4)
+                    {
+                        db.ranks.Find(Prov.RankID).Status = "Proficient";
+                    }else if(db.ranks.Find(Prov.RankID).NumOfOrders> 6)
+                    {
+                        db.ranks.Find(Prov.RankID).Status = "Experienced";
+                    }else if(db.ranks.Find(Prov.RankID).NumOfOrders > 8)
+                    {
+                        db.ranks.Find(Prov.RankID).Status = "Expert";
+                    }
+
+                    if (db.ranks.Find(Seeker.RankID).NumOfOrders > 2)
+                    {
+                        db.ranks.Find(Seeker.RankID).Status = "Talented";
+                    }
+                    else if (db.ranks.Find(Seeker.RankID).NumOfOrders > 4)
+                    {
+                        db.ranks.Find(Seeker.RankID).Status = "Proficient";
+                    }
+                    else if (db.ranks.Find(Seeker.RankID).NumOfOrders > 6)
+                    {
+                        db.ranks.Find(Seeker.RankID).Status = "Experienced";
+                    }
+                    else if (db.ranks.Find(Seeker.RankID).NumOfOrders > 8)
+                    {
+                        db.ranks.Find(Seeker.RankID).Status = "Expert";
+                    }
+
                 }
             }
             db.SaveChanges();
