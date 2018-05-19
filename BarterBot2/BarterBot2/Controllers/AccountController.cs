@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BarterBot2.Models;
 using System.Net.Sockets;
 using System.Text;
+using System.Net;
 
 namespace BarterBot2.Controllers
 {
@@ -15,8 +16,8 @@ namespace BarterBot2.Controllers
         public static List<Request> SentRequests = new List<Models.Request>();
         public static List<Request> ComingRequests = new List<Models.Request>();
         public static List<Service> OfferedServices = new List<Service>();
+        public static string NAMEIP;
         
-
         public ActionResult Index()
         {
             using (BarterBot2DbContext db = new BarterBot2DbContext())
@@ -44,7 +45,7 @@ namespace BarterBot2.Controllers
                     r.Status = "Begginer";
 
                     db.users.Add(user);
-                    
+
                     db.SaveChanges();
                     r.UserID = user.UserID;
 
@@ -74,6 +75,7 @@ namespace BarterBot2.Controllers
                 {
                     Session["UserId"] = usr.UserID.ToString();
                     Session["Email"] = usr.Email.ToString();
+                    MessagesController.ConnectToServer();
                     return RedirectToAction("LoggedIn");
                 }
                 else
@@ -91,6 +93,8 @@ namespace BarterBot2.Controllers
         {
             OfferedServices.Clear();
 
+            //MessagesController d = new MessagesController();
+            
             BarterBot2DbContext db = new BarterBot2DbContext();
 
             List<Service> services = new List<Service>();
@@ -123,6 +127,8 @@ namespace BarterBot2.Controllers
                 int ID = Convert.ToInt32(Session["UserId"]);
 
 
+                BarterBot2.Models.User uuu = db.users.Single(s => s.UserID == ID);
+                NAMEIP = uuu.FirstName;
                 if (db.requests.Count() != 0)
                 {
                     foreach (Service s in db.Services)
@@ -133,11 +139,11 @@ namespace BarterBot2.Controllers
                         }
                     }
 
-                    foreach(Request r in db.requests)
+                    foreach (Request r in db.requests)
                     {
-                        foreach(Service s in OfferedServices.ToList())
+                        foreach (Service s in OfferedServices.ToList())
                         {
-                            if(r.SeekerUserID == ID && s.ServiceID == r.ProviderServiceID)
+                            if (r.SeekerUserID == ID && s.ServiceID == r.ProviderServiceID)
                             {
                                 OfferedServices.Remove(s);
                             }
@@ -166,38 +172,38 @@ namespace BarterBot2.Controllers
 
                 foreach (Request r in db.requests)
                 {
-                    if (r.SeekerUserID == Convert.ToInt32(Session["UserId"]) )
+                    if (r.SeekerUserID == Convert.ToInt32(Session["UserId"]))
                     {
                         ud.sentRequests.Add(r);
                     }
                 }
-                
+
                 ud.offeredServices = OfferedServices.ToList();
 
                 List<int> conversationIDs = new List<int>();
                 List<Message> Messages = new List<Message>();
-                
+
 
                 foreach (Conversation g in db.conversations)
                 {
-                    
-                    if ( g.SenderID == ID || g.ReceiverID == ID  )
+
+                    if (g.SenderID == ID || g.ReceiverID == ID)
                     {
                         conversationIDs.Add(g.SenRevID);
 
-                        string merge = g.ReceiverID.ToString()+ g.SenderID.ToString();
+                        string merge = g.ReceiverID.ToString() + g.SenderID.ToString();
                         int reverse = Convert.ToInt32(merge);
 
                         conversationIDs.Add(reverse);
                     }
-                    
+
                 }
 
-                foreach(Message m in db.messages)
+                foreach (Message m in db.messages)
                 {
-                    foreach(int Mid in conversationIDs)
+                    foreach (int Mid in conversationIDs)
                     {
-                        if(m.SenRevID == Mid )
+                        if (m.SenRevID == Mid)
                         {
                             Messages.Add(m);
                         }
@@ -210,7 +216,7 @@ namespace BarterBot2.Controllers
 
                 Session["LoginFlag"] = 1;
                 return View(ud);
-                
+
             }
 
             else
@@ -226,9 +232,10 @@ namespace BarterBot2.Controllers
         {
             Session.Clear();
             Session["LoginFlag"] = null;
-            return RedirectToAction("Login","Account");
+            return RedirectToAction("Login", "Account");
         }
-        
+
+
     }
 
 }

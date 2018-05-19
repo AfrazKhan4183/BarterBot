@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BarterBot2.Models;
+using System.Net.Sockets;
+using System.Text;
 
 namespace BarterBot2.Controllers
 {
@@ -15,6 +17,15 @@ namespace BarterBot2.Controllers
         private BarterBot2DbContext db = new BarterBot2DbContext();
         private static Conversation c;
         private  static int reverseId;
+
+
+        private static Socket ClientSocket = new Socket
+            (AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+        private const int PORT = 100;
+        private  static string REQUEST;
+        public static string IP;
+
         // GET: Messages
         public ActionResult Index()
         {
@@ -36,6 +47,8 @@ namespace BarterBot2.Controllers
             return View(message);
         }
 
+
+
         //GET: Messages/Create
         public ActionResult Create()
         {
@@ -49,17 +62,17 @@ namespace BarterBot2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MessageID,SenRevID,SenderID,Text")] Message message)
         {
-          
             int i = db.messages.Count();
             message.MessageID = i + 1;
             message.SenRevID = c.SenRevID;
             message.SenderID = c.SenderID;
-            
+            REQUEST = message.Text;
+
             if(ModelState.IsValid)
             {
                 db.messages.Add(message);
                 db.SaveChanges();
-  
+                RequestLoop();
             }
 
             return RedirectToAction("CreateConversation");
@@ -67,6 +80,10 @@ namespace BarterBot2.Controllers
 
         public ActionResult Conversation(int Rid)
         {
+            
+            BarterBot2.Models.User r = db.users.Single(d => d.UserID == Rid);
+            HomeController.data3.Add(r.FirstName);
+
             int sender = Convert.ToInt32(Session["UserId"]);
             
             Conversation c1 = new Models.Conversation();
@@ -85,9 +102,7 @@ namespace BarterBot2.Controllers
         {
             BarterBot2DbContext db2 = new BarterBot2DbContext();
             Conversation cc = new Models.Conversation();
-           // Conversation ccc = new Models.Conversation();
-            //ccc = db2.conversations.Single(s => s.SenRevID == c.SenRevID);
-            
+           
             if(db2.conversations.Count()!=0)
             {
                 
@@ -201,8 +216,73 @@ namespace BarterBot2.Controllers
         }
 
         // POST: Messages/Delete/5
-     
 
-       
+        public static void ConnectToServer()
+        {
+            ClientSocket = new Socket
+            (AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); int attempts = 0;
+
+            while (!ClientSocket.Connected)
+            {
+                try
+                {
+                    attempts++;
+                    ClientSocket.Connect(IPAddress.Loopback, PORT);
+                }
+                catch (SocketException)
+                {
+                    Console.Clear();
+                }
+            }
+        }
+
+        private  void RequestLoop()
+        {
+            
+                SendRequest();
+         //       ReceiveResponse();
+            
+        }
+
+        /// <summary>
+        /// Close socket and exit program.
+        /// </summary>
+        private  void Exit()
+        {
+            SendString("exit"); // Tell the server we are exiting
+            ClientSocket.Shutdown(SocketShutdown.Both);
+            ClientSocket.Close();
+            
+            Environment.Exit(0);
+        }
+
+        private  void SendRequest()
+        {
+            string request = REQUEST;
+            SendString(request);
+            if (request.ToLower() == "exit")
+            {
+                Exit();
+            }
+        }
+
+        private  void SendString(string text)
+        {
+            byte[] buffer = Encoding.ASCII.GetBytes(text);
+            ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None);
+        }
+
+        private  void ReceiveResponse()
+        {
+            var buffer = new byte[2048];
+            int received = ClientSocket.Receive(buffer, SocketFlags.None);
+            if (received == 0) return;
+            var data = new byte[received];
+            Array.Copy(buffer, data, received);
+            string text = Encoding.ASCII.GetString(data);
+            Console.WriteLine(text);
+        }
     }
+
 }
+
