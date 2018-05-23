@@ -1,1 +1,2 @@
-BarterBot2/BarterBot2/Views/* linguist-vendored
+* linguist-vendored
+*.cshtml linguist-vendored=false
